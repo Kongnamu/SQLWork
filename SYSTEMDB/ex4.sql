@@ -5,12 +5,20 @@ CREATE TABLE ex4(
 );
 
 INSERT INTO ex4 VALUES ('sky2003', 'u1234');
-INSERT INTO ex4 VALUES ('sky2003', 'u54321'); -- 무결성 제약조건 위배
+INSERT INTO ex4 VALUES ('sky2003', 'u54321'); -- 무결성 제약조건 위배 (삽입 불가)
 INSERT INTO ex4 VALUES ('today123', 'u12345', 25); -- 나이 추가
+INSERT INTO ex4(id, passwd) VALUES ('today321', 'u23456');
+-- 자료형의 크기보다 큰 데이터는 입력 불가
+INSERT INTO ex4(id, passwd, age) VALUES ('today3210', 'u2345678910', 23);
 
-commit;
+COMMIT;
 
 -- 나이 칼럼 추가
 ALTER TABLE ex4 ADD age NUMBER(3);
 
+-- 자료형의 크기 변경(VARCHAR2 10 -> 12로 변경)
+ALTER TABLE ex4 MODIFY passwd VARCHAR2(12);
+
 SELECT * FROM ex4;
+
+DROP TABLE ex4;
