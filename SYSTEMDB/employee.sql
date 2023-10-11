@@ -40,6 +40,18 @@ WHERE deptid = 20;
 SELECT * FROM employee
 WHERE age IS NULL;
 
+-- 문자열 검색: 사원 이름에서 '강'이 들어있는 사원 검색
+SELECT * FROM employee
+WHERE empname LIKE '%강';
+
+-- 문자열 검색: 사원 이름에서 '강'을 포함하고 나이가 저장되지 않은 사원 검색
+SELECT * FROM employee
+WHERE empname LIKE '%강' AND age IS NULL;
+
+-- 문자열 검색: 사원 이름에서 '강'을 포함하거나 나이가 저장되지 않은 사원 검색
+SELECT * FROM employee
+WHERE empname LIKE '%강' OR age IS NULL;
+
 COMMIT;
 
 DROP TABLE employee;
