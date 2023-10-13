@@ -9,7 +9,7 @@ CREATE TABLE boards(
     bfiledata   BLOB 
 );
 
--- 시퀀스 생성
+-- 시퀀스 생성  / NOCACHE : 저장하지 않는다, 초기화되면 1부터 시작한다.
 CREATE SEQUENCE seq_bno NOCACHE;
 
 -- 게시글 추가
@@ -23,6 +23,16 @@ VALUES (seq_bno.NEXTVAL, 'smartPhone', '삼성 갤럭시 s21입니다', 'today',
 COMMIT;
 
 SELECT * FROM boards WHERE bwriter = 'sky123'
-ORDER BY bno DESC;0
+ORDER BY bno DESC;
+
+-- 글번호 5번의 제목을 'Iphone 15'로 변경
+UPDATE boards 
+SET btitle = 'Iphone 15', 
+    bcontent = 'Iphone 15입니다.'
+WHERE bno = 5;
+
+-- 9번 게시글 삭제
+delete from boards
+where bno = 9;
 
 DROP TABLE boards;
