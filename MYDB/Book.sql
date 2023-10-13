@@ -27,10 +27,35 @@ SELECT bookid, bookname, price FROM book;
 -- DISTINCT: 중복이 없는 유일한 데이터를 출력
 SELECT DISTINCT publisher FROM book;
 
+-- 출판사가 '굿스포츠' 또는 '대한미디어'인 도서를 검색
+SELECT * FROM book
+WHERE publisher = '굿스포츠' OR publisher = '대한미디어';
+
+-- 출판사가 '굿스포츠' 또는 '대한미디어'인 도서를 검색
+-- IN() 함수사용
+SELECT * FROM book
+WHERE publisher IN ('굿스포츠', '대한미디어');
+
+-- 출판사가 '굿스포츠' 또는 '대한미디어'인 도서를 제외하고 검색
+-- NOT IN() 함수사용
+SELECT * FROM book
+WHERE publisher NOT IN ('굿스포츠', '대한미디어');
+
 -- 가격이 20000원 미만은 도서 검색
 SELECT * FROM book
 WHERE price < 20000
 ORDER BY price;
+
+-- 가격이 13000원인 도서 검색
+SELECT * FROM book
+WHERE price = 13000;
+
+-- 가격이 13000원이 아닌 도서 검색
+SELECT * FROM book
+WHERE price <> 13000;
+
+SELECT * FROM book
+WHERE price != 13000;
 
 -- 가격이 10000원이상, 20000원 이하인 도서 검색
 -- 칼럼명 : BETWEEN A AND B
@@ -48,6 +73,10 @@ WHERE bookname LIKE '축구의 역사';
 -- 도서이름에 '해리포터'가 포함된 출판사를 검색
 SELECT bookname, publisher FROM book
 WHERE bookname LIKE '%해리포터%';
+
+-- 도서이름에 '해리포터'가 포함되지 않은 출판사 검색
+SELECT bookname, publisher FROM book
+WHERE bookname NOT LIKE '%해리포터%';
 
 -- '해리포터'에 관한 도서 중 가격이 20000원 이상인 도서를 검색
 SELECT bookname, price FROM book
