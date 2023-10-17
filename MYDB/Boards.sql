@@ -35,4 +35,6 @@ WHERE bno = 5;
 delete from boards
 where bno = 9;
 
+rollback;
+
 DROP TABLE boards;

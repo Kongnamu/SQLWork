@@ -66,3 +66,17 @@ FROM emp;
 
 
 SELECT * FROM emp;
+
+-- 급여가 가장 많은 사원이름과 급여를 검색
+-- MAX(SALARY)
+-- 서브쿼리(SUBQUERY), 중첩쿼리
+-- 최고급여, 최저급여 구하기
+-- 동시만족: AND / 동시출력: OR
+SELECT MAX(salary) FROM emp;
+SELECT MIN(salary) FROM emp;
+
+SELECT ename 이름, salary 급여
+FROM emp
+WHERE salary = (SELECT MAX(salary) FROM emp)
+   OR salary = (SELECT MIN(salary) FROM emp);
+
