@@ -79,4 +79,6 @@ SELECT ename 이름, salary 급여
 FROM emp
 WHERE salary = (SELECT MAX(salary) FROM emp)
    OR salary = (SELECT MIN(salary) FROM emp);
+   
+
 
